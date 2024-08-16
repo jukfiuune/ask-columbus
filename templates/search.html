@@ -1,0 +1,62 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@40,400,0,0" />
+        <style>
+            @keyframes result {
+                /*0% {
+                    transform: translate(0px, 0px) rotate(0deg) rotateX(0deg) rotateY(45deg);
+                }
+                25% {
+                    transform: translate(100px, 50px) rotate(45deg) rotateX(45deg) rotateY(0deg);
+                }
+                50% {
+                    transform: translate(200px, 0px) rotate(0deg) rotateX(0deg) rotateY(-45deg);
+                }
+                75% {
+                    transform: translate(100px, -50px) rotate(-45deg) rotateX(-45deg) rotateY(0deg);
+                }
+                100% {
+                    transform: translate(0px, 0px) rotate(0deg) rotateX(0deg) rotateY(45deg);
+                }*/
+                0%, 100% {
+                    transform: translate(0, 50%) rotate(-5deg);
+                }
+                50% {
+                    transform: translate(0, 50%) rotate(5deg);
+                }
+            }
+        </style>
+    </head>
+    <body class="noscroll">
+        <!-- <div id="topbar">
+            <img src="{{url_for('static', filename='logo.png')}}">
+            <div style="display: inline;">
+                <input type="text" style="width: 60%; height: 40px; font-size:large;" id="query" value="{{query}}">
+                <a href="javascript:search();"><span class="material-symbols-rounded" style="margin: 8px; transform: translateY(4px);">search</span></a>
+            </div>
+        </div> -->
+        <div style="height: 100vh;"></div>
+        <div id="results">
+            {% for result in results %}
+            <div style="animation: result 1s ease-in-out 0s infinite normal;">
+                <a href="{{result["href"]}}"><h1 style="text-align: center;">{{result["title"]}}</h1></a>
+                <div style="height: 25vh;"></div>
+            </div>
+            {% endfor %}
+        </div>
+        <div style="height: 75vh;"></div>
+        <script>
+            function search() {
+                window.location.replace("/search?q=" + (document.getElementById("query").value.trim() != "" ? document.getElementById("query").value.trim() : "christopher columbus"))
+            }
+            window.scroll({top: 0, left: 0, behavior: "instant"})
+            setInterval(function() {
+                window.scrollBy({top: 40, left: 0, behavior: "smooth"})
+                if(Math.abs(element.scrollHeight - element.scrollTop - element.clientHeight) < 1) clearInterval(this)
+            }, 10);
+        </script>
+    </body>
+</html>
