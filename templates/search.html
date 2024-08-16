@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -22,10 +23,10 @@
                     transform: translate(0px, 0px) rotate(0deg) rotateX(0deg) rotateY(45deg);
                 }*/
                 0%, 100% {
-                    transform: translate(0, 50%) rotate(-5deg);
+                    transform: translate(100px, 15%) rotate(-10deg);
                 }
                 50% {
-                    transform: translate(0, 50%) rotate(5deg);
+                    transform: translate(-100px, 85%) rotate(10deg);
                 }
             }
         </style>
@@ -48,14 +49,14 @@
             {% endfor %}
         </div>
         <div style="height: 75vh;"></div>
+        <h1 style="text-align: center;">Arrr, it seems ye didn’t reel in yer search result, matey! Care to <a href="javascript:search();">cast yer line again?</a></h1>
         <script>
             function search() {
-                window.location.replace("/search?q=" + (document.getElementById("query").value.trim() != "" ? document.getElementById("query").value.trim() : "christopher columbus"))
+                window.location.replace("/search?q=" + "{{ query }}" + "&n=" + "{{ number_results }}")
             }
             window.scroll({top: 0, left: 0, behavior: "instant"})
             setInterval(function() {
                 window.scrollBy({top: 40, left: 0, behavior: "smooth"})
-                if(Math.abs(element.scrollHeight - element.scrollTop - element.clientHeight) < 1) clearInterval(this)
             }, 10);
         </script>
     </body>
