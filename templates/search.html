@@ -43,7 +43,7 @@
         <div id="results">
             {% for result in results %}
             <div style="animation: result 1s ease-in-out 0s infinite normal;">
-                <a href="{{result["href"]}}"><h1 style="text-align: center;">{{result["title"]}}</h1></a>
+                <h3 style="text-align: center;"><a href="{{result["href"]}}">{{result["title"]}}</a></h3>
                 <div style="height: 25vh;"></div>
             </div>
             {% endfor %}
